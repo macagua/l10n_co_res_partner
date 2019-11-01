@@ -24,31 +24,4 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.       #
 ###############################################################################
 
-{
-    'name': 'Terceros - Colombia',
-    'category': 'Localization',
-    'version': '12.0',
-    'author': 'Odoo LoCo',
-    'license': 'AGPL-3',
-    'maintainer': 'Odoo LoCo',
-    'website': 'https://github.com/odooloco',
-    'summary': 'Terceros Colombia: Extendido de Partner / '
-               'Modulo de Contactos - Odoo 11.0',
-    'images': ['images/main_screenshot.png'],
-    'depends': [
-    'base',
-    'l10n_co',
-    'account'
-    ],
-    'data': [
-        'security/ir.model.access.csv',
-        'views/ciiu.xml',
-        'data/l10n_cities_co_data.xml',
-        'data/res.ciiu.csv',
-        'views/l10n_co_res_partner.xml',
-        'views/auth_signup_inherit.xml'
-    ],
-    'installable': True,
-    'application': True,
-    'auto_install': False,
-}
+from . import main
