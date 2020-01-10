@@ -242,16 +242,16 @@ class PartnerInfoExtended(models.Model):
 				for item in nameList:
 					if item is not '':
 						formatedList.append(item)
-				self.name = ' ' .join(formatedList).upper()
+				self.name = ' ' .join(formatedList).title()
 		else:
 			# Some Companies are know for their Brand, which could conflict from the users point of view while
 			# searching the company (e.j. o2 = brand, Telefonica = Company)
 			if self.companyBrandName is not False:
 				delimiter = ', '
 				company_list = (self.companyBrandName, self.companyName)
-				self.name = delimiter.join(company_list).upper()
+				self.name = delimiter.join(company_list).title()
 			else:
-				self.name = self.companyName.upper()
+				self.name = self.companyName.title()
 
 	@api.onchange('name')
 	def onChangeName(self):
@@ -499,7 +499,7 @@ class PartnerInfoExtended(models.Model):
 		@return: void
 		"""
 		if self.x_name1 is not False:
-			self.x_name1 = self.x_name1.upper()
+			self.x_name1 = self.x_name1.title()
 
 	@api.onchange('x_name2')
 	def onChangeName2Upper(self):
@@ -509,7 +509,7 @@ class PartnerInfoExtended(models.Model):
 		@return: void
 		"""
 		if self.x_name2 is not False:
-			self.x_name2 = self.x_name2.upper()
+			self.x_name2 = self.x_name2.title()
 
 	@api.onchange('x_lastname1')
 	def onChangeLastNameUpper(self):
@@ -519,7 +519,7 @@ class PartnerInfoExtended(models.Model):
 		@return: void
 		"""
 		if self.x_lastname1 is not False:
-			self.x_lastname1 = self.x_lastname1.upper()
+			self.x_lastname1 = self.x_lastname1.title()
 
 
 	@api.onchange('x_lastname2')
@@ -530,7 +530,7 @@ class PartnerInfoExtended(models.Model):
 		@return: void
 		"""
 		if self.x_lastname2 is not False:
-			self.x_lastname2 = self.x_lastname2.upper()
+			self.x_lastname2 = self.x_lastname2.title()
 
 	@api.onchange('companyName')
 	def onChangeCompanyNUpper(self):
@@ -540,7 +540,7 @@ class PartnerInfoExtended(models.Model):
 		@return: void
 		"""
 		if self.companyName is not False:
-			self.companyName = self.companyName.upper()
+			self.companyName = self.companyName.title()
 
 
 	@api.multi

@@ -33,7 +33,7 @@
     'maintainer': 'Odoo LoCo',
     'website': 'https://github.com/odooloco',
     'summary': 'Terceros Colombia: Extendido de Partner / '
-               'Modulo de Contactos - Odoo 11.0',
+               'Modulo de Contactos - Odoo 12.0',
     'images': ['images/main_screenshot.png'],
     'depends': [
     'base',
