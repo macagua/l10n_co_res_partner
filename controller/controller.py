@@ -1,14 +1,7 @@
 # -*- coding: utf-8 -*-
 ###############################################################################
 #                                                                             #
-#                                                                             #
-# Part of Odoo. See LICENSE file for full copyright and licensing details.    #
-#                                                                             #
-#                                                                             #
-#                                                                             #
-# Co-Authors    Odoo LoCo                                                     #
-#               Localización funcional de Odoo para Colombia                  #
-#                                                                             #
+# Copyright (C) 2016  Dominic Krimmer                                         #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU Affero General Public License as published by #
@@ -24,5 +17,28 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.       #
 ###############################################################################
 
-from . import main
-from . import controller
+from odoo import http
+from odoo.http import request
+
+class controller(http.Controller):
+
+    @http.route('/l10n_co_res_partner/get_partner_state_city',  methods=['POST'], type='json', auth="public", website=True)
+    def get_partner_state_city(self, **kw):
+        _response = {}
+        partner_id = kw.get('partner_id')
+        query = "select xcity from res_partner where id = " + str(partner_id)
+        request.cr.execute(query)
+        partner_city = request.cr.dictfetchone()
+        _response['xcity_id_'] = partner_city
+        return _response
+
+    @http.route('/l10n_co_res_partner/get_state_city',  methods=['POST'], type='json', auth="public", website=True)
+    def get_state_city(self, **kw):
+        _response = {'state_cities':None}
+        state_id_ = kw.get('state_id')
+        if(state_id_):
+            query = "select code, id, name  from res_country_state_city where state_id = '" + str(state_id_) + "'"
+            request.cr.execute(query)
+            res_country_state_city = request.cr.dictfetchall()
+            _response['state_cities'] = res_country_state_city
+        return _response

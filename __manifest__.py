@@ -46,7 +46,8 @@
         'data/l10n_cities_co_data.xml',
         'data/res.ciiu.csv',
         'views/l10n_co_res_partner.xml',
-        'views/auth_signup_inherit.xml'
+        'views/auth_signup_inherit.xml',
+        'views/website.xml',
     ],
     'installable': True,
     'application': True,
