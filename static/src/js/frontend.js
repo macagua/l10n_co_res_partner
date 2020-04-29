@@ -6,7 +6,7 @@ odoo.define('module.DianInvoice', function(require) {
     {
         var flagLoaded = false;
         var mainIntervalTime = 2500;
-        setInterval(function() 
+        var itv = setInterval(function() 
         {
             if($("form.checkout_autoformat").length>0)
             {
@@ -46,6 +46,8 @@ odoo.define('module.DianInvoice', function(require) {
                     var xcity_zip = $(this).find('option:selected').attr('code');
                     $("input[name='zip']").val(xcity_zip);
                 }); 
+
+                clearInterval(itv)
 
             }
         
@@ -98,7 +100,7 @@ odoo.define('module.DianInvoice', function(require) {
             
                 $.ajax({
                     type: "POST",
-                    url: '/l10n_co_res_partner/get_state_city',
+                    url: '/l10n_co_res_partner/get_state_city/',
                     data: JSON.stringify(data),
                     dataType: 'json',
                     contentType: "application/json",
