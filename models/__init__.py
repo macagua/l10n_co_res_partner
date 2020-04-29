@@ -1,14 +1,7 @@
 # -*- coding: utf-8 -*-
 ###############################################################################
 #                                                                             #
-#                                                                             #
-# Part of Odoo. See LICENSE file for full copyright and licensing details.    #
-#                                                                             #
-#                                                                             #
-#                                                                             #
-# Co-Authors    Odoo LoCo                                                     #
-#               Localización funcional de Odoo para Colombia                  #
-#                                                                             #
+# Copyright (C) 2016  Dominic Krimmer                                         #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU Affero General Public License as published by #
@@ -25,4 +18,4 @@
 ###############################################################################
 
 from . import l10n_co_res_partner
-from . import res_ciiu
+from . import ciiu
