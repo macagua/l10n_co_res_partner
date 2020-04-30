@@ -44,6 +44,7 @@
                 </xpath>  
                 <xpath expr="//form[@class='checkout_autoformat']//div//div" position="inside">
                      <div>
+                            <input type="checkbox" t-att-value="'is_company' in checkout and checkout['is_company']" name="is_company" class="form-control website-is_company hidden-element"></input>  
                             <input type="text"  name="name"  class="form-control website-name hidden-element" readonly="1" t-att-value="'name' in checkout and checkout['name']" ></input> 
                             <input type="text"  name="pos_name"  class="form-control website-name hidden-element" readonly="1" t-att-value="'name' in checkout and checkout['name']" ></input> 
                             <input type="text"  name="companyBrandName"  class="form-control website-name hidden-element" readonly="1" t-att-value="'company_name' in checkout and checkout['company_name']" ></input> 
@@ -51,11 +52,11 @@
                                 <tr>
                                     <td>
                                         <label>Primer Nombre</label>
-                                        <input t-att-value="'x_name1' in checkout and checkout['x_name1']" type="text" name="x_name1" placeholder="Richi" class="form-control website-x_name1"/>
+                                        <input t-att-value="'x_name1' in checkout and checkout['x_name1']" type="text" name="x_name1" placeholder="Jon" class="form-control website-x_name1"/>
                                     </td>
                                     <td>
                                         <label>Segundo Nombre</label>
-                                        <input t-att-value="'x_name2' in checkout and checkout['x_name2']" type="text" name="x_name2" placeholder="Hamilton" class="form-control website-x_name2"/>
+                                        <input t-att-value="'x_name2' in checkout and checkout['x_name2']" type="text" name="x_name2" placeholder="Smith" class="form-control website-x_name2"/>
                                     </td>
                                 </tr>
                                 <tr>

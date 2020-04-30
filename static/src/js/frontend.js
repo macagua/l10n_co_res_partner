@@ -76,10 +76,13 @@ odoo.define('module.DianInvoice', function(require) {
             if(String(company_name)=="")
             {
                 $("select[name='doctype']").val(13);
+                $("input[name='verificationDigit']").val('');
+                $("input[name='is_company']").prop( "checked", false );
             }
             if(String(company_name).length > 0 )
             {
                 $("select[name='doctype']").val(31);
+                $("input[name='is_company']").prop( "checked", true );                
             }
         }
         function update_customer_full_name()
