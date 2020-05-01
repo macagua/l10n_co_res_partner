@@ -72,16 +72,20 @@
                             </table>                        
                     </div>
                 </xpath>
-                <xpath expr="//form[@class='checkout_autoformat']/div[@class='form-row']/div[12]" position="after">
+                 <xpath expr="//form[@class='checkout_autoformat']/div[@class='form-row']/div[12]" position="after">
                     <t> 
                         <div class="div_district form-group  col-lg-6">
                             <label class="col-form-label" for="xcity">Municipio</label>                 
                                 <select name="xcity" class="form-control ">
 
                                 </select>     
-                        </div>           
+                        </div>  
+                         <div class="div_zip_custom form-group  col-lg-6" style="max-width:200px">
+                                <label class="col-form-label label-optional" for="zip">Zip Code</label>
+                                <input type="text" name="zip" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}" t-att-value="'zip' in checkout and checkout['zip']" style="max-width:200px"/>
+                        </div> 
                     </t>
-                </xpath>              
+                </xpath>            
         </template>                        
     </data>
 </odoo>

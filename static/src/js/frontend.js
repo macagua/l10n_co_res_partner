@@ -9,7 +9,10 @@ odoo.define('module.DianInvoice', function(require) {
         var itv = setInterval(function() 
         {
             if($("form.checkout_autoformat").length>0)
-            {
+            {   
+                $(".div_zip").remove()
+                $('#country_id option[value="Colombia"]');
+                $('input[name="city"]').val("not_needed")
                 init_xcity_selection()             
 
                 $(document).on("blur", "input[name='xidentification']", function() 
