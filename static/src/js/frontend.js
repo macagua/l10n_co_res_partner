@@ -11,7 +11,9 @@ odoo.define('module.DianInvoice', function(require) {
             if($("form.checkout_autoformat").length>0)
             {   
                 $(".div_zip").remove()
-                $('#country_id option[value="Colombia"]');
+                var country_id = $('#country_id option:contains(Colombia)').val();
+                $("#country_id").val(country_id);
+                
                 $('input[name="city"]').val("not_needed")
                 init_xcity_selection()             
 
@@ -56,10 +58,24 @@ odoo.define('module.DianInvoice', function(require) {
         
         function init_xcity_selection() 
         {
+            
+            populate_states(country_id);
             if($("select[name='xcity']").find('option').length == 0)
             {                
                 populate_xcity_field(true);
+                
+                
             }
+            var companyBrandName = $("input[name='companyBrandName']").val()
+            if(String(companyBrandName).length>0)
+            {
+                $("select[name='doctype']").val(31); 
+            }
+            else
+            {
+                $("select[name='doctype']").val(13); 
+            }
+            $("input[name='company_name']").val(companyBrandName);
         }
 
         function update_nit_cod_verification()
@@ -129,7 +145,8 @@ odoo.define('module.DianInvoice', function(require) {
                                     
                                     $("select[name='xcity']").html('');
                                     $("select[name='xcity']").append(xcities_options);
-
+                                    var code = $("select[name='xcity'] option:selected").attr("code")
+                                    $("input[name='zip']").val(code) 
                                     if(set_partner_city)
                                     {
                                         
@@ -149,7 +166,9 @@ odoo.define('module.DianInvoice', function(require) {
                                             {
                                                 if (response.result.xcity_id_!=null) 
                                                 {
-                                                    $("select[name='xcity']").val(response.result.xcity_id_.xcity) 
+                                                    $("select[name='xcity']").val(response.result.xcity_id_.xcity)
+                                                    var code = $("select[name='xcity'] option:selected").attr("code")
+                                                    $("input[name='zip']").val(code)  
                                                 }
                                             }
                                         });
@@ -160,6 +179,25 @@ odoo.define('module.DianInvoice', function(require) {
                             {console.log(error) }
                         }
             
+                    }
+                });
+
+        }
+
+        function populate_states(country_id)
+        {
+            var data = { "params": { "mode": "shipping" } }
+            var country_id = $('#country_id option:contains(Colombia)').val();
+                $.ajax({
+                    type: "POST",
+                    url: '/shop/country_infos/' + String(country_id),
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    contentType: "application/json",
+                    async: false,
+                    success: function(response) 
+                    {
+                        console.log(response)
                     }
                 });
 
