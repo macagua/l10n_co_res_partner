@@ -197,7 +197,29 @@ odoo.define('module.DianInvoice', function(require) {
                     async: false,
                     success: function(response) 
                     {
-                        console.log(response)
+                        var xidentification = $('input[name="xidentification"]').val();
+                        if(String(xidentification).length==0)
+                        {
+
+                        
+                        if(response.result.states)
+                        {
+                            var states = response.result.states;
+                            var options = ""
+                            states.forEach(function(state,index)
+                            {
+                                // [679, "Vichada", "VID"]
+                               if(parseInt(state[0])>0)
+                                   options = options + String("<option value='"+state[0]+"' data-code='"+state[2]+"'>") + String(state[1]) +String("<option>")
+                            });
+                            $("select[name='state_id']").html("");
+                            $("select[name='state_id']").append(options);
+                            $("select[name='state_id'] option").not( "[value]" ).remove();
+                            var xcity_code = $("select[name='xcity'] option:selected").attr("code");
+                            $("input[name='zip']").val(xcity_code);
+
+                        }
+                    }
                     }
                 });
 
