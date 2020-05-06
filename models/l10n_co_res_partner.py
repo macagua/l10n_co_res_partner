@@ -155,6 +155,7 @@ class PartnerInfoExtended(models.Model):
         result = []
         for item in self.pool.get('res.partner').fields_get(cr, uid, allfields=['personType'], context=context)['personType']['selection']:
             result.append({'id': item[0], 'name': item[1]})
+        raise Warning(result)
         return result
 
     @api.depends('xidentification')
