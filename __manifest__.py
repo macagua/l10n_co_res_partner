@@ -14,7 +14,8 @@
         'account',
         'base',
         'website',
-        'website_form'
+        'website_form',
+        'website_sale'
     ],
     'data': [
         'views/l10n_co_res_partner.xml',
