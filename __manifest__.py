@@ -12,7 +12,9 @@
     'images': ['images/main_screenshot.png'],
     'depends': [
         'account',
-        'base'
+        'base',
+        'website',
+        'website_form'
     ],
     'data': [
         'views/l10n_co_res_partner.xml',
