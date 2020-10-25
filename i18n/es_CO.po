@@ -1,19 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* l10n_co_res_partner
-#
+# * l10n_co_res_partner
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 12.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-10 02:00+0000\n"
-"PO-Revision-Date: 2016-06-10 02:00+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2020-10-25 08:45-0400\n"
+"Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
+"Language-Team: ES <LL@li.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. module: l10n_co_res_partner
 #: selection:res.partner,doctype:0
@@ -63,12 +65,12 @@ msgstr "43 - Sin identificación del exterior o para uso definido por la DIAN"
 #. module: l10n_co_res_partner
 #: model:ir.ui.view,arch_db:l10n_co_res_partner.res_partner_kanban_view_extened
 msgid "<b>Information is incomplete!</b><br/> Please update soon!"
-msgstr "<b>¡Datos incompletos!</b><br/> Por favor, actualice pronto."
+msgstr "<b>¡Datos incompletos!</b><br/> ¡Por favor, actualice pronto!"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_xbirthday
 msgid "Birthday"
-msgstr "Fecha de Nacimiento"
+msgstr "Fecha de nacimiento"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_companyBrandName
@@ -78,7 +80,7 @@ msgstr "Marca"
 #. module: l10n_co_res_partner
 #: model:ir.ui.view,arch_db:l10n_co_res_partner.view_partner_form
 msgid "Brand Name of the Company?"
-msgstr "Nombre de la Marca"
+msgstr "¿Nombre de Marca de la empresa?"
 
 #. module: l10n_co_res_partner
 #: model:ir.actions.act_window,help:l10n_co_res_partner.action_ciiu_transaction
@@ -92,7 +94,7 @@ msgstr "Actividad CIIU"
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_change_country
 msgid "Change Country / Department?"
-msgstr "Cambiar País/Dpt./Ciudad?"
+msgstr "¿Cambiar País / Dpto. / Ciudad?"
 
 #. module: l10n_co_res_partner
 #: model:ir.ui.view,arch_db:l10n_co_res_partner.view_partner_form
@@ -112,12 +114,12 @@ msgstr "Ciudad"
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_code
 msgid "Code"
-msgstr "Codigo"
+msgstr "Código"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_name
 msgid "Code and Description"
-msgstr "Codigo y Descripción"
+msgstr "Código y Descripción"
 
 #. module: l10n_co_res_partner
 #: selection:res.partner,x_pn_retri:0
@@ -132,7 +134,7 @@ msgstr "Común Auto-retenedor"
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_companyType
 msgid "Company Type"
-msgstr ""
+msgstr "Tipo de Empresa"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_country_state_city_country_id
@@ -144,13 +146,13 @@ msgstr "País"
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_create_uid
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_country_state_city_create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creado por"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_create_date
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_country_state_city_create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creado el"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,help:l10n_co_res_partner.field_res_country_state_city_code
@@ -176,17 +178,17 @@ msgstr "Descripción"
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_display_name
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_country_state_city_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Mostrar nombre"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_division
 msgid "Division"
-msgstr ""
+msgstr "División"
 
 #. module: l10n_co_res_partner
 #: model:ir.ui.view,arch_db:l10n_co_res_partner.res_partner_kanban_view_extened
 msgid "Document #"
-msgstr "N° Documento:"
+msgstr "N° documento:"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_xidentification
@@ -196,7 +198,7 @@ msgstr "Numero de Documento"
 #. module: l10n_co_res_partner
 #: model:ir.ui.view,arch_db:l10n_co_res_partner.view_partner_form
 msgid "Don't touch! Field will be filled up automatically!"
-msgstr "¡Campo se llenará automáticamente!"
+msgstr "¡No lo toques, el campo se llenará automáticamente!"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_dv
@@ -218,7 +220,7 @@ msgstr "¡Error! El número de identificación sólo permite números"
 #: code:addons/l10n_co_res_partner/models/l10n_co_res_partner.py:434
 #, python-format
 msgid "Error! Identification number is mandatory"
-msgstr "¡Error! Número de identificación es obligatorio!"
+msgstr "¡Error! Número de identificación es obligatorio"
 
 #. module: l10n_co_res_partner
 #: code:addons/l10n_co_res_partner/models/l10n_co_res_partner.py:398
@@ -230,32 +232,32 @@ msgstr "¡Error! Número de identificación debe tener entre 2 y 12 dígitos"
 #: code:addons/l10n_co_res_partner/models/l10n_co_res_partner.py:431
 #, python-format
 msgid "Error! Please choose an identification type"
-msgstr "¡Error! Porfavor escoga un tipo de identificación"
+msgstr "¡Error! Por favor, elija un tipo de identificación"
 
 #. module: l10n_co_res_partner
 #: code:addons/l10n_co_res_partner/models/l10n_co_res_partner.py:450
 #, python-format
 msgid "Error! Please enter the companys name"
-msgstr "¡Error! Porfavor ingrese el nombre de la empresa"
+msgstr "¡Error! Por favor, ingrese el nombre de la empresa"
 
 #. module: l10n_co_res_partner
 #: code:addons/l10n_co_res_partner/models/l10n_co_res_partner.py:458
 #, python-format
 msgid "Error! Please enter the name of the person"
-msgstr "¡Error! Porfavor ingrese el nombre de la persona"
+msgstr "¡Error! Por favor, ingrese el nombre de la persona"
 
 #. module: l10n_co_res_partner
 #: code:addons/l10n_co_res_partner/models/l10n_co_res_partner.py:446
 #: code:addons/l10n_co_res_partner/models/l10n_co_res_partner.py:454
 #, python-format
 msgid "Error! Please enter the persons name"
-msgstr "¡Error! Porfavor ingrese el nombre de la persona"
+msgstr "¡Error! Por favor, ingrese el nombre de la persona"
 
 #. module: l10n_co_res_partner
 #: code:addons/l10n_co_res_partner/models/l10n_co_res_partner.py:468
 #, python-format
 msgid "Error! Please select a person type"
-msgstr "¡Error! Por favor selecciona un tipo de persona"
+msgstr "¡Error! Por favor, selecciona un tipo de persona"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,help:l10n_co_res_partner.field_res_partner_xidentification
@@ -276,36 +278,36 @@ msgstr "Gran Contribuyente"
 #. module: l10n_co_res_partner
 #: selection:res.partner,x_pn_retri:0
 msgid "Great Taxpayer Autorretenedor"
-msgstr "Gran Contribuyente  Auto-retenedor"
+msgstr "Gran Contribuyente Auto-retenedor"
 
 #. module: l10n_co_res_partner
 #: selection:ciiu,hierarchy:0
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_has_division
 msgid "Has Division?"
-msgstr "Tiene Division?"
+msgstr "¿Tiene División?"
 
 #. module: l10n_co_res_partner
 #: selection:ciiu,hierarchy:0
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_has_parent
 msgid "Has Parent?"
-msgstr "Tiene Padre?"
+msgstr "¿Tiene Padre?"
 
 #. module: l10n_co_res_partner
 #: selection:ciiu,hierarchy:0
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_has_section
 msgid "Has Section?"
-msgstr "Tiene Seccion?"
+msgstr "¿Tiene Sección?"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_hierarchy
 msgid "Hierarchy"
-msgstr ""
+msgstr "Jerarquía"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_id
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_country_state_city_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_ciiu
@@ -320,7 +322,7 @@ msgstr "Identificación"
 #. module: l10n_co_res_partner
 #: sql_constraint:res.partner:0
 msgid "Identification number must be unique!"
-msgstr "¡Error! El número de identificación debe ser único!"
+msgstr "¡Error, el número de identificación debe ser único!"
 
 #. module: l10n_co_res_partner
 #: selection:res.partner,x_pn_retri:0
@@ -341,7 +343,7 @@ msgstr "juridica"
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu___last_update
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_country_state_city___last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificación el"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_x_lastname1
@@ -353,23 +355,23 @@ msgstr "Primer Apellido"
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_write_uid
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_country_state_city_write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Última actualización por"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_write_date
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_country_state_city_write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Última actualización el"
 
 #. module: l10n_co_res_partner
 #: model:ir.model,name:l10n_co_res_partner.model_ciiu
 msgid "Lista CIIU"
-msgstr "ISIC List"
+msgstr "Lista ISIC"
 
 #. module: l10n_co_res_partner
 #: model:ir.model,name:l10n_co_res_partner.model_res_country_state_city
 msgid "Model to manipulate Cities"
-msgstr ""
+msgstr "Modelo para manipular ciudades"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_xcity
@@ -385,7 +387,7 @@ msgstr "NIT Formateado"
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_companyName
 #: model:ir.ui.view,arch_db:l10n_co_res_partner.view_partner_form
 msgid "Name of the Company"
-msgstr "Nombre de la Compañia"
+msgstr "Nombre de la Empresa"
 
 #. module: l10n_co_res_partner
 #: selection:res.partner,personType:0
@@ -415,7 +417,7 @@ msgstr "Padre"
 #. module: l10n_co_res_partner
 #: model:ir.model,name:l10n_co_res_partner.model_res_partner
 msgid "Partner"
-msgstr ""
+msgstr "Socio"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_pos_name
@@ -452,7 +454,7 @@ msgstr "Simplificado"
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_country_state_city_state_id
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_res_partner_x_pn_retri
@@ -461,8 +463,17 @@ msgstr "Regímen Tributario"
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,help:l10n_co_res_partner.field_res_partner_companyType
+#, fuzzy
 msgid "Technical field, used only to display a boolean using a radio button. As for Odoo v9 RadioButton cannot be used on boolean fields, this one serves as interface. Due to the old API limitations with interface function field, we implement it by hand instead of a true function field. When migrating to the new API the code should be simplified. Changing thecompany_type of a company contact into a company will not displaythis contact as a company contact but as a standalone company."
 msgstr ""
+"Campo técnico, usado solo para mostrar un booleano usando un botón de radio. "
+"En cuanto a Odoo v9 Radio Button no se puede usar en campos booleanos, este "
+"sirve como interfaz. Debido a las antiguas limitaciones de la API con el "
+"campo de función de interfaz, lo implementamos a mano en lugar de un campo "
+"de función real. Al migrar a la nueva API, el código debe simplificarse. "
+"Cambiar el company_type de un contacto de la empresa a una empresa no "
+"mostrará este contacto como un contacto de la empresa, sino como una empresa "
+"independiente."
 
 #. module: l10n_co_res_partner
 #: model:ir.model.fields,field_description:l10n_co_res_partner.field_ciiu_type
