@@ -24,6 +24,21 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
+DOCTYPE = [
+    ('1', "No identification"),
+    ('11', "11 - Birth Certificate"),
+    ('12', "12 - Identity Card"),
+    ('13', "13 - Citizenship Card"),
+    ('21', "21 - Alien Registration Card"),
+    ('22', "22 - Foreigner ID"),
+    ('31', "31 - TAX Number (NIT)"),
+    ('41', "41 - Passport"),
+    ('42', "42 - Foreign Identification Document"),
+    ('43', "43 - No Foreign Identification")
+
+]
+
+
 class CountryStateCity(models.Model):
     """
     Model added to manipulate separately the cities on Partner address.
@@ -58,21 +73,7 @@ class PartnerInfoExtended(models.Model):
     x_lastname2 = fields.Char("Second Last Name")
 
     # Document information
-    doctype = fields.Selection(
-        [
-            (1, "No identification"),
-            (11, "11 - Birth Certificate"),
-            (12, "12 - Identity Card"),
-            (13, "13 - Citizenship Card"),
-            (21, "21 - Alien Registration Card"),
-            (22, "22 - Foreigner ID"),
-            (31, "31 - TAX Number (NIT)"),
-            (41, "41 - Passport"),
-            (42, "42 - Foreign Identification Document"),
-            (43, "43 - No Foreign Identification")
-
-        ], "Type of Identification"
-    )
+    doctype = fields.Selection(DOCTYPE, string="Type of Identification", default='1')
     xidentification = fields.Char("Document Number", store=True,
                                   help="Enter the Identification Number")
     verificationDigit = fields.Integer('VD', size=2)
@@ -238,7 +239,7 @@ class PartnerInfoExtended(models.Model):
                 self.x_name2 = False
                 self.x_lastname1 = False
                 self.x_lastname2 = False
-                self.doctype = 1
+                self.doctype = '1'
             else:
                 for item in nameList:
                     if item is not b'':
@@ -313,11 +314,11 @@ class PartnerInfoExtended(models.Model):
         if self.company_type == 'company':
             self.personType = 2
             self.is_company = True
-            self.doctype = 31
+            self.doctype = '31'
         else:
             self.personType = 1
             self.is_company = False
-            self.doctype = 1
+            self.doctype = '1'
 
     @api.onchange('is_company')
     def on_change_is_company(self):
@@ -354,7 +355,7 @@ class PartnerInfoExtended(models.Model):
         @return: String
         """
         for item in self:
-            if item.doctype != 31:
+            if item.doctype != '31':
                 return str(nit)
 
             nitString = '0'*(15-len(nit)) + nit
@@ -410,7 +411,7 @@ class PartnerInfoExtended(models.Model):
         @return: void
         """
         for item in self:
-            if item.doctype is not 1:
+            if item.doctype is not '1':
                 msg = _('Error! Number of digits in Identification number must be'
                         'between 2 and 12')
                 if len(str(item.xidentification)) < 2:
@@ -428,10 +429,10 @@ class PartnerInfoExtended(models.Model):
         @return: void
         """
         for item in self:
-            if item.doctype is not 1:
+            if item.doctype is not '1':
                 if item.xidentification is not False and \
-                        item.doctype != 21 and \
-                        item.doctype != 41:
+                        item.doctype != '21' and \
+                        item.doctype != '41':
                     if re.match("^[0-9]+$", item.xidentification) is None:
                         msg = _('Error! Identification number can only '
                                 'have numbers')
@@ -443,11 +444,11 @@ class PartnerInfoExtended(models.Model):
         This function throws and error if there is no document type selected.
         @return: void
         """
-        if self.doctype is not 1:
+        if self.doctype is not '1':
             if self.doctype is False:
                 msg = _('Error! Please choose an identification type')
                 raise exceptions.ValidationError(msg)
-            elif self.xidentification is False and self.doctype is not 43:
+            elif self.xidentification is False and self.doctype is not '43':
                 msg = _('Error! Identification number is mandatory')
                 raise exceptions.ValidationError(msg)
 
