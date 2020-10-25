@@ -98,11 +98,11 @@ class PartnerInfoExtended(models.Model):
     ciiu = fields.Many2one('ciiu', "ISIC Activity")
     personType = fields.Selection(
         [
-            (1, "Natural"),
-            (2, "Juridical")
+            ('1', "Natural"),
+            ('2', "Juridical")
         ],
-        "Type of Person",
-        default=1
+        string="Type of Person",
+        default='1'
     )
 
     # Replacing the field company_type
@@ -277,13 +277,13 @@ class PartnerInfoExtended(models.Model):
         contact cleaner and ready for analysis
         @return: void
         """
-        if self.personType is 2:
+        if self.personType is '2':
             self.x_name1 = ''
             self.x_name2 = ''
             self.x_lastname1 = ''
             self.x_lastname2 = ''
             self.x_pn_retri = '7'
-        elif self.personType is 1:
+        elif self.personType is '1':
             self.companyName = False
             self.companyBrandName = False
             self.x_pn_retri = False
@@ -308,11 +308,11 @@ class PartnerInfoExtended(models.Model):
         @return: void
         """
         if self.company_type == 'company':
-            self.personType = 2
+            self.personType = '2'
             self.is_company = True
             self.doctype = '31'
         else:
-            self.personType = 1
+            self.personType = '1'
             self.is_company = False
             self.doctype = '1'
 
@@ -324,7 +324,7 @@ class PartnerInfoExtended(models.Model):
         @return: void
         """
         if self.is_company is True:
-            self.personType = 2
+            self.personType = '2'
             self.company_type = 'company'
             self.xbirthday = False
         else:
@@ -455,11 +455,11 @@ class PartnerInfoExtended(models.Model):
         we check it again to get sure
         """
         if self.is_company is True:
-            if self.personType is 1:
+            if self.personType is '1':
                 if self.x_name1 is False or self.x_name1 == '':
                     msg = _('Error! Please enter the persons name')
                     raise exceptions.ValidationError(msg)
-            elif self.personType is 2:
+            elif self.personType is '2':
                 if self.companyName is False:
                     msg = _('Error! Please enter the companys name')
                     raise exceptions.ValidationError(msg)
