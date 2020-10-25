@@ -47,11 +47,11 @@ class IndustrialClassification(models.Model):
 
     hierarchy = fields.Selection(
         [
-            (1, 'Has Parent?'),
-            (2, 'Has Division?'),
-            (3, 'Has Section?')
+            ('1', 'Has Parent?'),
+            ('2', 'Has Division?'),
+            ('3', 'Has Section?')
         ],
-        'Hierarchy'
+        string='Hierarchy'
     )
 
 
