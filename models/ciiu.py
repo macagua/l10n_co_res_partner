@@ -55,7 +55,6 @@ class IndustrialClassification(models.Model):
     )
 
 
-    @api.multi
     @api.depends('code', 'description')
     def _compute_concat_name(self):
         """
@@ -71,7 +70,6 @@ class IndustrialClassification(models.Model):
                     ' - ' + str(rec.description.encode('utf-8').strip())
 
 
-    @api.multi
     @api.depends('has_parent')
     def _compute_set_type(self):
         """

@@ -485,7 +485,6 @@ class PartnerInfoExtended(models.Model):
             msg = _('Error! Please select a person type')
             raise exceptions.ValidationError(msg)
 
-    @api.multi
     def _display_address(self, without_company=False):
 
         '''
