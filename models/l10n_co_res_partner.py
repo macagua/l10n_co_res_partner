@@ -35,9 +35,17 @@ DOCTYPE = [
     ('41', "41 - Passport"),
     ('42', "42 - Foreign Identification Document"),
     ('43', "43 - No Foreign Identification")
-
 ]
 
+X_PN_RETRI = [
+    ('6', "Simplified"),
+    ('23', "Natural Person"),
+    ('7', "Common"),
+    ('11', "Great Taxpayer Autorretenedor"),
+    ('22', "International"),
+    ('25', "Common Autorretenedor"),
+    ('24', "Great Contributor")
+],
 
 class CountryStateCity(models.Model):
     """
@@ -84,19 +92,7 @@ class PartnerInfoExtended(models.Model):
     )
 
     # Tributate regime
-    x_pn_retri = fields.Selection(
-                                    [
-                                        (6, "Simplified"),
-                                        (23, "Natural Person"),
-                                        (7, "Common"),
-                                        (11, "Great Taxpayer Autorretenedor"),
-                                        (22, "International"),
-                                        (25, "Common Autorretenedor"),
-                                        (24, "Great Contributor")
-                                    ], 
-                                    string="Tax Regime",
-                                    default=6                                    
-                                  )
+    x_pn_retri = fields.Selection(X_PN_RETRI, string="Tax Regime", default='6')
 
     # CIIU - Clasificación Internacional Industrial Uniforme
     ciiu = fields.Many2one('ciiu', "ISIC Activity")
@@ -286,7 +282,7 @@ class PartnerInfoExtended(models.Model):
             self.x_name2 = ''
             self.x_lastname1 = ''
             self.x_lastname2 = ''
-            self.x_pn_retri = 7
+            self.x_pn_retri = '7'
         elif self.personType is 1:
             self.companyName = False
             self.companyBrandName = False
