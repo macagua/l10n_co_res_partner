@@ -10,17 +10,17 @@
 
         <template id="dian_address_b2b" inherit_id="website_sale.address_b2b">
                 <xpath expr="//input[@name='vat']" position="replace">
-                    <t>  
+                    <t>
                         <input type="hidden"  name="partner_id"  class="form-control website-partner_id" readonly="1" t-att-value="partner_id" ></input>                
                         <select  name="doctype" id="doctype" t-attf-class="form-control #{error.get('doctype') and 'is-invalid' or ''}" t-att-readonly="'1' if 'vat' in checkout and checkout['vat'] and not can_edit_vat else None">
-                            <option t-att-value="13"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '13'">13 - Cédula de ciudadanía</option>
-                            <option t-att-value="31"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '31'">31 - NIT (Número de identificación tributaria)</option>
-                            <option t-att-value="11"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '11'">11 - Registro civil de nacimiento</option>
-                            <option t-att-value="41"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '41'">41 - Pasaporte</option>
-                            <option t-att-value="12"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '12'">12 - Tarjeta de identidad</option>
-                            <option t-att-value="21"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '21'">21 - Tarjeta de extranjería</option>
-                            <option t-att-value="22"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '22'">22 - Cédula de extranjería</option>
-                            <option t-att-value="42"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '42'">42 - Documento de identificación extranjero</option>
+                            <option t-att-value="13"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '13'">13 - Citizenship Card</option>
+                            <option t-att-value="31"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '31'">31 - TAX Number (NIT)</option>
+                            <option t-att-value="11"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '11'">11 - Birth Certificate</option>
+                            <option t-att-value="41"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '41'">41 - Passport</option>
+                            <option t-att-value="12"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '12'">12 - Identity Card</option>
+                            <option t-att-value="21"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '21'">21 - Alien Registration Card</option>
+                            <option t-att-value="22"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '22'">22 - Foreigner ID</option>
+                            <option t-att-value="42"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '42'">42 - Foreign Identification Document</option>
                         </select>
                     </t>
                      <t>
@@ -34,7 +34,7 @@
                                         <input type="text" name="xidentification" placeholder="24645765" class="form-control website-xidentification" t-att-value="'xidentification' in checkout and checkout['xidentification']" ></input>
                                     </td>
                                     <td width="73%">
-                                        <input type="text" placeholder="Para N.I.T" name="verificationDigit"  class="form-control website-verificationDigit" readonly="1" t-att-value="'verificationDigit' in checkout and checkout['verificationDigit']" ></input>
+                                        <input type="text" placeholder="For TAX Number (NIT)" name="verificationDigit"  class="form-control website-verificationDigit" readonly="1" t-att-value="'verificationDigit' in checkout and checkout['verificationDigit']" ></input>
                                     </td>
                                 </tr>
                                 
@@ -51,21 +51,21 @@
                             <table class="form-full-width block-names">
                                 <tr>
                                     <td>
-                                        <label>Primer Nombre</label>
+                                        <label>First name</label>
                                         <input t-att-value="'x_name1' in checkout and checkout['x_name1']" type="text" name="x_name1" placeholder="Jon" class="form-control website-x_name1"/>
                                     </td>
                                     <td>
-                                        <label>Segundo Nombre</label>
-                                        <input t-att-value="'x_name2' in checkout and checkout['x_name2']" type="text" name="x_name2" placeholder="Smith" class="form-control website-x_name2"/>
+                                        <label>Second Name</label>
+                                        <input t-att-value="'x_name2' in checkout and checkout['x_name2']" type="text" name="x_name2" placeholder="Peter" class="form-control website-x_name2"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label>Primer Apellido</label>
+                                        <label>Surname</label>
                                         <input t-att-value="'x_lastname2' in checkout and checkout['x_lastname1']" type="text" name="x_lastname1" placeholder="Gomez" class="form-control website-x_lastname1"/>
                                     </td>
                                     <td>
-                                        <label>Segundo Apellido</label>
+                                        <label>Second surname</label>
                                         <input t-att-value="'x_lastname2' in checkout and checkout['x_lastname2']" type="text" name="x_lastname2" placeholder="Giraldo" class="form-control website-x_lastname2"/>
                                     </td>
                                 </tr>
@@ -75,7 +75,7 @@
                  <xpath expr="//form[@class='checkout_autoformat']/div[@class='form-row']/div[12]" position="after">
                     <t> 
                         <div class="div_district form-group  col-lg-6">
-                            <label class="col-form-label" for="xcity">Municipio</label>                 
+                            <label class="col-form-label" for="xcity">Municipality</label>
                                 <select name="xcity" class="form-control ">
 
                                 </select>     
