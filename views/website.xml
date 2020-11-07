@@ -13,14 +13,14 @@
                     <t>
                         <input type="hidden"  name="partner_id"  class="form-control website-partner_id" readonly="1" t-att-value="partner_id" ></input>                
                         <select  name="doctype" id="doctype" t-attf-class="form-control #{error.get('doctype') and 'is-invalid' or ''}" t-att-readonly="'1' if 'vat' in checkout and checkout['vat'] and not can_edit_vat else None">
-                            <option t-att-value="13"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '13'">13 - Citizenship Card</option>
-                            <option t-att-value="31"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '31'">31 - TAX Number (NIT)</option>
-                            <option t-att-value="11"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '11'">11 - Birth Certificate</option>
-                            <option t-att-value="41"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '41'">41 - Passport</option>
-                            <option t-att-value="12"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '12'">12 - Identity Card</option>
-                            <option t-att-value="21"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '21'">21 - Alien Registration Card</option>
-                            <option t-att-value="22"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '22'">22 - Foreigner ID</option>
-                            <option t-att-value="42"  t-att-selected="'doctype' in checkout and checkout['doctype'] == '42'">42 - Foreign Identification Document</option>
+                            <option t-att-value="thirteen"  t-att-selected="'doctype' in checkout and checkout['doctype'] == 'thirteen'">13 - Citizenship Card</option>
+                            <option t-att-value="thirty-one"  t-att-selected="'doctype' in checkout and checkout['doctype'] == 'thirty-one'">31 - TAX Number (NIT)</option>
+                            <option t-att-value="eleven"  t-att-selected="'doctype' in checkout and checkout['doctype'] == 'eleven'">11 - Birth Certificate</option>
+                            <option t-att-value="forty-one"  t-att-selected="'doctype' in checkout and checkout['doctype'] == 'forty-one'">41 - Passport</option>
+                            <option t-att-value="twelve"  t-att-selected="'doctype' in checkout and checkout['doctype'] == 'twelve'">12 - Identity Card</option>
+                            <option t-att-value="twenty-one"  t-att-selected="'doctype' in checkout and checkout['doctype'] == 'twenty-one'">21 - Alien Registration Card</option>
+                            <option t-att-value="twenty-two"  t-att-selected="'doctype' in checkout and checkout['doctype'] == 'twenty-two'">22 - Foreigner ID</option>
+                            <option t-att-value="forty-two"  t-att-selected="'doctype' in checkout and checkout['doctype'] == 'forty-two'">42 - Foreign Identification Document</option>
                         </select>
                     </t>
                      <t>

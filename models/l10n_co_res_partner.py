@@ -24,29 +24,6 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-DOCTYPE = [
-    ('1', "No identification"),
-    ('11', "11 - Birth Certificate"),
-    ('12', "12 - Identity Card"),
-    ('13', "13 - Citizenship Card"),
-    ('21', "21 - Alien Registration Card"),
-    ('22', "22 - Foreigner ID"),
-    ('31', "31 - TAX Number (NIT)"),
-    ('41', "41 - Passport"),
-    ('42', "42 - Foreign Identification Document"),
-    ('43', "43 - No Foreign Identification")
-]
-
-X_PN_RETRI = [
-    ('6', "Simplified"),
-    ('23', "Natural Person"),
-    ('7', "Common"),
-    ('11', "Great Taxpayer Autorretenedor"),
-    ('22', "International"),
-    ('25', "Common Autorretenedor"),
-    ('24', "Great Contributor")
-],
-
 class CountryStateCity(models.Model):
     """
     Model added to manipulate separately the cities on Partner address.
@@ -65,6 +42,39 @@ class PartnerInfoExtended(models.Model):
     _name = 'res.partner'
     _inherit = 'res.partner'
 
+    _DOCTYPE = [
+        ('one', 'No identification'),
+        ('eleven', '11 - Birth Certificate'),
+        ('twelve', '12 - Identity Card'),
+        ('thirteen', '13 - Citizenship Card'),
+        ('twenty-one', '21 - Alien Registration Card'),
+        ('twenty-two', '22 - Foreigner ID'),
+        ('thirty-one', '31 - TAX Number (NIT)'),
+        ('forty-one', '41 - Passport'),
+        ('forty-two', '42 - Foreign Identification Document'),
+        ('forty-three', '43 - No Foreign Identification'),
+    ],
+
+    _X_PN_RETRI = [
+        ('six', 'Simplified'),
+        ('seven', 'Common'),
+        ('eleven', 'Great Taxpayer Autorretenedor'),
+        ('twenty-two', 'International'),
+        ('twenty-three', 'Natural Person'),
+        ('twenty-four', 'Great Contributor'),
+        ('twenty-five', 'Common Autorretenedor'),
+    ],
+
+    _PERSON_TYPE = [
+        ('one', 'Natural'),
+        ('two', 'Juridical')
+    ],
+
+    _COMPANY_TYPE = [
+        ('person', 'Individual'),
+        ('company', 'Company')
+    ],
+
     # Company Name (legal name)
     companyName = fields.Char(string="Name of the Company")
 
@@ -81,7 +91,11 @@ class PartnerInfoExtended(models.Model):
     x_lastname2 = fields.Char(string="Second Last Name")
 
     # Document information
-    doctype = fields.Selection(selection=DOCTYPE, default='1', string="Type of Identification")
+    doctype = fields.Selection(
+        selection=_DOCTYPE,
+        # default='one',
+        string="Type of Identification",
+    )
     xidentification = fields.Char(string="Document Number", store=True,
                                   help="Enter the Identification Number")
     verificationDigit = fields.Integer('VD', size=2)
@@ -92,25 +106,24 @@ class PartnerInfoExtended(models.Model):
     )
 
     # Tributate regime
-    x_pn_retri = fields.Selection(selection=X_PN_RETRI, default='6', string="Tax Regime")
+    x_pn_retri = fields.Selection(
+        selection=_X_PN_RETRI,
+        # default='six',
+        string="Tax Regime",
+    )
 
     # CIIU - Clasificación Internacional Industrial Uniforme
     ciiu = fields.Many2one('ciiu', string="ISIC Activity")
     personType = fields.Selection(
-        [
-            ('1', "Natural"),
-            ('2', "Juridical")
-        ],
-        default='1',
+        selection=_PERSON_TYPE,
+        # default='one',
         string="Type of Person",
     )
 
     # Replacing the field company_type
     company_type = fields.Selection(
-        [
-            ('person', 'Individual'),
-            ('company', 'Company')
-        ]
+        string="Type of Company",
+        selection=_COMPANY_TYPE,
     )
 
     # Boolean if contact is a company or an individual
@@ -163,7 +176,7 @@ class PartnerInfoExtended(models.Model):
         """
         # Executing only for Document Type 31 (NIT)
         for partner in self:
-            if partner.doctype is 31:
+            if partner.doctype is 'thirty-one':
                 # First check if entered value is valid
                 self._check_ident()
                 self._check_ident_num()
@@ -235,7 +248,7 @@ class PartnerInfoExtended(models.Model):
                 self.x_name2 = False
                 self.x_lastname1 = False
                 self.x_lastname2 = False
-                self.doctype = '1'
+                self.doctype = 'one'
             else:
                 for item in nameList:
                     if item is not b'':
@@ -277,13 +290,13 @@ class PartnerInfoExtended(models.Model):
         contact cleaner and ready for analysis
         @return: void
         """
-        if self.personType is '2':
+        if self.personType is 'two':
             self.x_name1 = ''
             self.x_name2 = ''
             self.x_lastname1 = ''
             self.x_lastname2 = ''
-            self.x_pn_retri = '7'
-        elif self.personType is '1':
+            self.x_pn_retri = 'seven'
+        elif self.personType is 'one':
             self.companyName = False
             self.companyBrandName = False
             self.x_pn_retri = False
@@ -308,13 +321,13 @@ class PartnerInfoExtended(models.Model):
         @return: void
         """
         if self.company_type == 'company':
-            self.personType = '2'
+            self.personType = 'two'
             self.is_company = True
-            self.doctype = '31'
+            self.doctype = 'thirty-one'
         else:
-            self.personType = '1'
+            self.personType = 'one'
             self.is_company = False
-            self.doctype = '1'
+            self.doctype = 'one'
 
     @api.onchange('is_company')
     def on_change_is_company(self):
@@ -324,7 +337,7 @@ class PartnerInfoExtended(models.Model):
         @return: void
         """
         if self.is_company is True:
-            self.personType = '2'
+            self.personType = 'two'
             self.company_type = 'company'
             self.xbirthday = False
         else:
@@ -351,7 +364,7 @@ class PartnerInfoExtended(models.Model):
         @return: String
         """
         for item in self:
-            if item.doctype != '31':
+            if item.doctype != 'thirty-one':
                 return str(nit)
 
             nitString = '0'*(15-len(nit)) + nit
@@ -407,7 +420,7 @@ class PartnerInfoExtended(models.Model):
         @return: void
         """
         for item in self:
-            if item.doctype is not '1':
+            if item.doctype is not 'one':
                 msg = _('Error! Number of digits in Identification number must be'
                         'between 2 and 12')
                 if len(str(item.xidentification)) < 2:
@@ -425,10 +438,10 @@ class PartnerInfoExtended(models.Model):
         @return: void
         """
         for item in self:
-            if item.doctype is not '1':
+            if item.doctype is not 'one':
                 if item.xidentification is not False and \
-                        item.doctype != '21' and \
-                        item.doctype != '41':
+                        item.doctype != 'twenty-one' and \
+                        item.doctype != 'forty-one':
                     if re.match("^[0-9]+$", item.xidentification) is None:
                         msg = _('Error! Identification number can only '
                                 'have numbers')
@@ -440,11 +453,11 @@ class PartnerInfoExtended(models.Model):
         This function throws and error if there is no document type selected.
         @return: void
         """
-        if self.doctype is not '1':
+        if self.doctype is not 'one':
             if self.doctype is False:
                 msg = _('Error! Please choose an identification type')
                 raise exceptions.ValidationError(msg)
-            elif self.xidentification is False and self.doctype is not '43':
+            elif self.xidentification is False and self.doctype is not 'forty-three':
                 msg = _('Error! Identification number is mandatory')
                 raise exceptions.ValidationError(msg)
 
@@ -455,11 +468,11 @@ class PartnerInfoExtended(models.Model):
         we check it again to get sure
         """
         if self.is_company is True:
-            if self.personType is '1':
+            if self.personType is 'one':
                 if self.x_name1 is False or self.x_name1 == '':
                     msg = _('Error! Please enter the persons name')
                     raise exceptions.ValidationError(msg)
-            elif self.personType is '2':
+            elif self.personType is 'two':
                 if self.companyName is False:
                     msg = _('Error! Please enter the companys name')
                     raise exceptions.ValidationError(msg)
