@@ -32,10 +32,10 @@ class CountryStateCity(models.Model):
     _name = 'res.country.state.city'
     _order = 'code'
 
-    code = fields.Char('City Code', size=5, help='Code DANE - 5 digits-', required=True)
-    name = fields.Char('City Name', size=64, required=True)
-    state_id = fields.Many2one('res.country.state', 'State', required=True)
-    country_id = fields.Many2one('res.country', 'Country', required=True)
+    code = fields.Char(string='City Code', help='Code DANE - 5 digits-', size=5, required=True)
+    name = fields.Char(string='City Name', size=64, required=True)
+    state_id = fields.Many2one('res.country.state', string='State', required=True)
+    country_id = fields.Many2one('res.country', string='Country', required=True)
 
 
 class PartnerInfoExtended(models.Model):
@@ -43,19 +43,19 @@ class PartnerInfoExtended(models.Model):
     _inherit = 'res.partner'
 
     # Company Name (legal name)
-    companyName = fields.Char("Name of the Company")
+    companyName = fields.Char(string="Name of the Company")
 
     # Brand Name (e.j. Claro Móvil = Brand, COMCEL SA = legal name)
-    companyBrandName = fields.Char("Brand")
+    companyBrandName = fields.Char(string="Brand")
 
     # companyType
-    companyType = fields.Selection(related='company_type')
+    companyType = fields.Selection(related='company_type', string="Type of Company")
 
     # Adding new name fields
-    x_name1 = fields.Char("First Name")
-    x_name2 = fields.Char("Second Name")
-    x_lastname1 = fields.Char("Last Name")
-    x_lastname2 = fields.Char("Second Last Name")
+    x_name1 = fields.Char(string="First Name")
+    x_name2 = fields.Char(string="Second Name")
+    x_lastname1 = fields.Char(string="Last Name")
+    x_lastname2 = fields.Char(string="Second Last Name")
 
     # Document information
     doctype = fields.Selection(
@@ -73,9 +73,9 @@ class PartnerInfoExtended(models.Model):
 
         ], "Type of Identification"
     )
-    xidentification = fields.Char("Document Number", store=True,
+    xidentification = fields.Char(string="Document Number", store=True,
                                   help="Enter the Identification Number")
-    verificationDigit = fields.Integer('VD', size=2)
+    verificationDigit = fields.Integer(string='VD', size=2)
     formatedNit = fields.Char(
         string='NIT Formatted',
         compute="_compute_concat_nit",
@@ -98,13 +98,13 @@ class PartnerInfoExtended(models.Model):
                                   )
 
     # CIIU - Clasificación Internacional Industrial Uniforme
-    ciiu = fields.Many2one('ciiu', "ISIC Activity")
+    ciiu = fields.Many2one('ciiu', string="ISIC Activity")
     personType = fields.Selection(
         [
             (1, "Natural"),
             (2, "Juridical")
         ],
-        "Type of Person",
+        string="Type of Person",
         default=1
     )
 
@@ -113,7 +113,8 @@ class PartnerInfoExtended(models.Model):
         [
             ('person', 'Individual'),
             ('company', 'Company')
-        ]
+        ],
+        string="Type of Company",
     )
 
     # Boolean if contact is a company or an individual
@@ -123,9 +124,9 @@ class PartnerInfoExtended(models.Model):
     dv = fields.Integer(string=None, store=True)
 
     # Country -> State -> Municipality - Logic
-    country_id = fields.Many2one('res.country', "Country")
-    xcity = fields.Many2one('res.country.state.city', "Municipality")
-    city = fields.Char(related="xcity.name")
+    country_id = fields.Many2one('res.country', string="Country")
+    xcity = fields.Many2one('res.country.state.city', string="Municipality")
+    city = fields.Char(related="xcity.name", string="City")
 
     # identification field has to be unique,
     # therefore a constraint will validate it:
@@ -140,17 +141,19 @@ class PartnerInfoExtended(models.Model):
                                     default=True, store=False)
 
     # Name of point of sales / delivery contact
-    pos_name = fields.Char("Point of Sales Name")
+    pos_name = fields.Char(string="Point of Sales Name")
 
     # Birthday of the contact (only useful for non-company contacts)
-    xbirthday = fields.Date("Birthday")
+    xbirthday = fields.Date(string="Birthday")
 
+    @api.multi
     def get_doctype(self, cr, uid, context={'lang': 'es_CO'}):
         result = []
         for item in self.pool.get('res.partner').fields_get(cr, uid, allfields=['doctype'], context=context)['doctype']['selection']:
             result.append({'id': item[0], 'name': item[1]})
         return result
 
+    @api.multi
     def get_persontype(self, cr, uid, context={'lang': 'es_CO'}):
         result = []
         for item in self.pool.get('res.partner').fields_get(cr, uid, allfields=['personType'], context=context)['personType']['selection']:
@@ -203,12 +206,12 @@ class PartnerInfoExtended(models.Model):
     @api.onchange('x_name1', 'x_name2', 'x_lastname1', 'x_lastname2', 'companyName', 'pos_name', 'companyBrandName')
     def _concat_name(self):
         """
-                This function concatenates the four name fields in order to be able to
-                search for the entire name. On the other hand the original name field
-                should not be editable anymore as the new name fields should fill it up
-                automatically.
-                @return: void
-                """
+        This function concatenates the four name fields in order to be able to
+        search for the entire name. On the other hand the original name field
+        should not be editable anymore as the new name fields should fill it up
+        automatically.
+        @return: void
+        """
         # Avoiding that "False" will be written into the name field
         if not self.x_name1:
             self.x_name1 = ''
@@ -371,6 +374,7 @@ class PartnerInfoExtended(models.Model):
             else:
                 return str(11-result)
 
+    @api.multi
     def onchange_location(self, cr, uid, ids, country_id=False,
                           state_id=False):
         """
@@ -487,7 +491,6 @@ class PartnerInfoExtended(models.Model):
 
     @api.multi
     def _display_address(self, without_company=False):
-
         '''
         The purpose of this function is to build and return an address formatted accordingly to the
         standards of the country where it belongs.

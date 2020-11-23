@@ -42,7 +42,7 @@
                         </div>
                     </t>
                 </xpath>  
-                <xpath expr="//form[@class='checkout_autoformat']//div//div" position="inside">
+                <xpath expr="//form[hasclass('checkout_autoformat')]//div//div" position="inside">
                      <div>
                             <input type="checkbox" t-att-value="'is_company' in checkout and checkout['is_company']" name="is_company" class="form-control website-is_company hidden-element"></input>  
                             <input type="text"  name="name"  class="form-control website-name hidden-element" readonly="1" t-att-value="'name' in checkout and checkout['name']" ></input> 
@@ -72,7 +72,7 @@
                             </table>                        
                     </div>
                 </xpath>
-                 <xpath expr="//form[@class='checkout_autoformat']/div[@class='form-row']/div[12]" position="after">
+                 <xpath expr="//form[hasclass('checkout_autoformat')]/div[hasclass('form-row')]/div[12]" position="after">
                     <t> 
                         <div class="div_district form-group  col-lg-6">
                             <label class="col-form-label" for="xcity">Municipality</label>

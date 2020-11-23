@@ -29,21 +29,21 @@ class IndustrialClassification(models.Model):
         store=True,
         compute="_compute_concat_name"
     )
-    code = fields.Char('Code', required=True)
-    description = fields.Char('Description', required=True)
+    code = fields.Char(string="Code", required=True)
+    description = fields.Char(string="Description", required=True)
     type = fields.Char(
-        'Type',
+        string="Type",
         store=True,
         compute="_compute_set_type"
     )
-    has_parent = fields.Boolean('Has Parent?')
-    parent = fields.Many2one('ciiu', 'Parent')
+    has_parent = fields.Boolean(string="Has Parent?")
+    parent = fields.Many2one('ciiu', string="Parent")
 
-    has_division = fields.Boolean('Has Division?')
-    division = fields.Many2one('ciiu', 'Division')
+    has_division = fields.Boolean(string="Has Division?")
+    division = fields.Many2one('ciiu', string="Division")
 
-    has_section = fields.Boolean('Has Section?')
-    section = fields.Many2one('ciiu', 'Section')
+    has_section = fields.Boolean(string="Has Section?")
+    section = fields.Many2one('ciiu', string="Section")
 
     hierarchy = fields.Selection(
         [
@@ -51,7 +51,7 @@ class IndustrialClassification(models.Model):
             (2, 'Has Division?'),
             (3, 'Has Section?')
         ],
-        'Hierarchy'
+        string='Hierarchy'
     )
 
 

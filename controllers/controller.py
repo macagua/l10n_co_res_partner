@@ -20,6 +20,7 @@
 from odoo import http
 from odoo.http import request
 
+
 class controller(http.Controller):
 
     @http.route('/l10n_co_res_partner/get_partner_state_city/',  methods=['POST'], type='json', auth="public", website=True)
